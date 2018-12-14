@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>2048</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+</head>
+<body>
+    <h1>2048</h1>
+    <p id='score'></p>
+    <div class='size-block'>
+        <p id='size-title'>Size : </p>
+        <input id='size' type='number' value='4'>
+        <input id='change-size' type='button' value='ok'>
+        <div class='clear0'></div>
+    </div>
+    <div id='canvas-block'>
+        <canvas id='canvas' width='500' height='500'></canvas>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
