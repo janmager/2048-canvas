@@ -6,6 +6,7 @@ var changeSize = $("#change-size");
 var scoreLabel = $("#score");
 
 var score = 0;
+var bestScore = localStorage.getItem('score2048');
 var size = 4;
 var width = canvas.width / size - 6;
 
@@ -27,6 +28,8 @@ function canvasClear(){
 }
 
 startGame();
+if(bestScore != null || bestScore != undefined) $("#bestScore").html("Best score: "+bestScore);
+else $("#bestScore").html("Best score: 0");
 
 function startGame(){
     createCells();
@@ -36,6 +39,7 @@ function startGame(){
 }
 
 function finishGame() {
+    localStorage.setItem('score2048', this.score);
     canvas.style.opacity = '0.5';
     loss = true;
 }
@@ -79,10 +83,11 @@ function drawCell(cell){
    ctx.fill();
    if(cell.value){
        fontSize = width/2;
-       ctx.font = fontSize + "px Arial";
+       ctx.font = fontSize + "px Viga";
        ctx.fillStyle = "white";
        ctx.textAlign = "center";
-       ctx.fillText(cell.value, cell.x + width/2, cell.y + width);
+      //  ctx.textBaseline = "middle";
+       ctx.fillText(cell.value, cell.x+width/2, cell.y+width/1.5);
    }
 }
 

@@ -5,20 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>2048</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Viga" rel="stylesheet">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
 </head>
 <body>
-    <h1>2048</h1>
-    <p id='score'></p>
-    <div class='size-block'>
-        <p id='size-title'>Size : </p>
-        <input id='size' type='number' value='4'>
-        <input id='change-size' type='button' value='ok'>
-        <div class='clear0'></div>
+    <div class='container'>
+        <div class='fluid'>
+            <h1>2048</h1>
+            <div class='edits'>
+                <div class='size-block'>
+                    <div class='set-size'>
+                        <p id='size-title'>Size : </p>
+                        <input id='size' type='number' value='4'>
+                        <input id='change-size' type='button' value='ok'>
+                    </div>
+                    <div class='reset'>
+                        Reset
+                    </div>
+                </div>
+                <div class='scores'>
+                    <span id='score'>Score: 0</span>
+                    <span id='bestScore'>Best Score: 0</span>
+                </div>
+            </div>
+            <div id='canvas-block'>
+                <canvas id='canvas' width='500' height='500'></canvas>
+            </div>
+        </div>
     </div>
-    <div id='canvas-block'>
-        <canvas id='canvas' width='500' height='500'></canvas>
-    </div>
+    
     
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="main.js"></script>
