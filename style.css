@@ -73,8 +73,9 @@ body{
     flex-direction: column;
 }
 #canvas{
-    background: pink;
+    background: rgba(var(--blue),1);
     margin-top: 30px;
+    box-sizing: border-box;
 }
 h1{
     font-size: 58px;
@@ -89,6 +90,7 @@ h1{
     align-items: flex-end;
 }
 .edits{
+    min-width: 500px;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -111,10 +113,48 @@ h1{
     justify-content: center;
     align-items: flex-start;
 }
-.reset, #bestScore{
+.btns, #bestScore{
     margin-top: 15px;
 }
 .size-block input{
     margin-left: 10px;
     max-width: 50px;
+}
+#size{
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    font-size: 18px;
+    padding: 5px 8px 5px 5px;
+    width: 60px;
+    outline: none;
+    box-sizing: border-box;
+    text-align: center;
+}
+.lose, .start2{
+    z-index: 999;
+    position: absolute;
+    margin-top: 15px;
+    font-size: 35px;
+    display: none;
+}
+.start2{
+    display: block;
+    min-width: 150px;
+    margin-top: 200px;
+}
+#canvas-block{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+.reset{
+    margin-left: 15px;
 }

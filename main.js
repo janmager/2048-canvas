@@ -2,7 +2,7 @@ var canvas = $("#canvas")[0];
 var ctx = canvas.getContext('2d');
 
 var sizeInput = $("#size");
-var changeSize = $("#change-size");
+var changeSize = $(".start");
 var scoreLabel = $("#score");
 
 var score = 0;
@@ -27,7 +27,17 @@ function canvasClear(){
     ctx.clearRect(0,0,500,500);
 }
 
-startGame();
+$(".reset").click(function(){
+  startGame();
+});
+
+$("canvas").css({"display":"none"});
+$(".start2").click(function(){
+  $("canvas").css({"display":"block"});
+  startGame();
+  $(".start2").css({"display":"none"});
+})
+
 if(bestScore != null || bestScore != undefined) $("#bestScore").html("Best score: "+bestScore);
 else $("#bestScore").html("Best score: 0");
 
@@ -40,8 +50,9 @@ function startGame(){
 
 function finishGame() {
     localStorage.setItem('score2048', this.score);
-    canvas.style.opacity = '0.5';
+    canvas.style.opacity = '0.3';
     loss = true;
+    $(".lose").css({"display":"block"});
 }
 
 function cell(row, col){
@@ -63,28 +74,32 @@ function drawCell(cell){
    ctx.beginPath();
    ctx.rect(cell.x, cell.y, width, width);
 
+   var fontColor;
+
+   ctx.fillStyle = "#384081";
+
    switch(cell.value){
-       case 0 : ctx.fillStlye = "#FF0000"; break;
-       case 2 : ctx.fillStyle = "#FF0033"; break;
-       case 4 : ctx.fillStyle = "#FF00A6"; break;
-       case 8 : ctx.fillStyle = "#DE00FF"; break;
-       case 16 : ctx.fillStyle = "#6F00FF"; break;
-       case 32 : ctx.fillStyle = "#003CFF"; break;
-       case 64 : ctx.fillStyle = "#00EBFF"; break;
-       case 128 : ctx.fillStyle = "#00FF8D"; break;
-       case 254 : ctx.fillStyle = "#00FF22"; break;
-       case 512 : ctx.fillStyle = "#7CFF00"; break;
-       case 1024 : ctx.fillStyle = "#F7FF00"; break;
-       case 2048 : ctx.fillStyle = "#FF7C00"; break;
-       case 4096 : ctx.fillStyle = "#FF2F00"; break;
-       default : ctx.fillStyle = "#FFFFFF"; 
+       case 0 : ctx.fillStlye = "rgb(135,200,116)"; fontColor = "white"; break;
+       case 2 : ctx.fillStyle = "rgb(135,200,116)"; fontColor = "white"; break;
+       case 4 : ctx.fillStyle = "rgb(95,149,212)"; fontColor = "white"; break;
+       case 8 : ctx.fillStyle = "rgb(139,89,177)"; fontColor = "white"; break;
+       case 16 : ctx.fillStyle = "rgb(229,195,81)"; fontColor = "white"; break;
+       case 32 : ctx.fillStyle = "rgb(202,77,64)"; fontColor = "white"; break;
+       case 64 : ctx.fillStyle = "rgb(108,129,112)"; fontColor = "white"; break;
+       case 128 : ctx.fillStyle = "rgb(207,126,63)"; fontColor = "white"; break;
+       case 256 : ctx.fillStyle = "rgb(82,125,124)"; fontColor = "white"; break;
+       case 512 : ctx.fillStyle = "rgb(191,76,134)"; fontColor = "white"; break;
+       case 1024 : ctx.fillStyle = "rgb(119,41,92)"; fontColor = "white"; break;
+       case 2048 : ctx.fillStyle = "rgb(118,179,194)"; fontColor = "white"; break;
+       case 4096 : ctx.fillStyle = "rgb(52,63,79)"; fontColor = "white"; break;
+       default : ctx.fillStyle = "rgba(70,80,161,0.8)"; fontColor = "white"; 
    }
 
    ctx.fill();
    if(cell.value){
        fontSize = width/2;
        ctx.font = fontSize + "px Viga";
-       ctx.fillStyle = "white";
+       ctx.fillStyle = fontColor;
        ctx.textAlign = "center";
       //  ctx.textBaseline = "middle";
        ctx.fillText(cell.value, cell.x+width/2, cell.y+width/1.5);
